@@ -9,15 +9,29 @@
 import UIKit
 
 var selectedWord = ""
-var solutionWords = ["sarah","ghadah","arafah"]
-var solutionWord = "sarah"
+var solutionWords = ["الله","محمد","الإسلام","ركعتان","سارة","الظهر","العصر","المغرب","العشاء","الفجر","الضحى"]
+var solutionWord = "فوزية"
+
+enum CaseOfWord: Int {
+    case vertical = 0
+    case horizontal = 1
+    case diagonal = 2
+    case reversedDiagonal = 3
+    
+    static func randomCaseOfWord() -> CaseOfWord {
+        // pick and return a new value
+        let rand = Int(arc4random_uniform(UInt32(4)))
+        return CaseOfWord(rawValue: rand) ?? .vertical
+    }
+}
 
 class PuzzleViewController: UIViewController, CharacterGridViewDelegate {
 
     @IBOutlet var sourceLabel: UILabel!
     @IBOutlet var targetLabel: UILabel!
     @IBOutlet var characterGridView: CharacterGridView!
-
+    @IBOutlet weak var targetTextView: UITextView!
+    
     fileprivate var matchedWordLocations = [WordLocation]()
     fileprivate let highlightColor = UIColor.random()
     var randomCharGrid = RandomCharacterGrid()
@@ -34,7 +48,7 @@ class PuzzleViewController: UIViewController, CharacterGridViewDelegate {
 
     var puzzle: Puzzle? {
         didSet {
-            sourceLabel.text = "sarah"
+            sourceLabel.text = "أبحث عن الكلمات داخل الشبكة"
 //            characterGridView.characterGrid = [["f", "t", "v", "s", "a", "r", "s", "h"], ["h", "j", "e", "t", "e", "t", "a", "z"], ["x", "e", "o", "i", "e", "l", "r", "h"], ["q", "t", "i", "u", "q", "s", "a", "s"], ["c", "u", "m", "y", "v", "l", "h", "x"], ["n", "l", "m", "m", "o", "t", "e", "k"], ["a", "g", "r", "n", "n", "x", "s", "m"]]
             
 //            sourceLabel.text = puzzle?.word
@@ -63,7 +77,8 @@ class PuzzleViewController: UIViewController, CharacterGridViewDelegate {
 //        randomCharGrid.generateVerticalGrid()
 //        randomCharGrid.generateHorizontalGrid()
 //        randomCharGrid.generateDiameterGrid()
-        randomCharGrid.generateReversedDiameterGrid()
+//        randomCharGrid.generateReversedDiagonalGrid()
+        randomCharGrid.fillGridRandomly()
         characterGridView.characterGrid = randomCharGrid.characterGrid
         
     }
@@ -71,8 +86,9 @@ class PuzzleViewController: UIViewController, CharacterGridViewDelegate {
     func updateTargetLabel() {
         var text = NSMutableAttributedString()
         defer {
-            targetLabel.text = "sarah"
+//            targetLabel.text = solutionWords.description
 //            targetLabel.attributedText = text
+            targetTextView.text = "من ربك ؟\n" + "من نبيك ؟\n" + "ما دينك ؟\n" + "كم عدد ركعات صلاة الفجر؟\n" + "سارة"
         }
         guard let puzzle = puzzle else { return }
         let strikeThroughAttributes = [
@@ -143,7 +159,7 @@ class PuzzleViewController: UIViewController, CharacterGridViewDelegate {
                 ($0.coordinates.first! == highlight.endCoordinate && $0.coordinates.last! == highlight.startCoordinate)
         })
         //sarah
-        return (solutionWord.contains(selectedWord) || solutionWord.contains(String(selectedWord.reversed())))
+        return (solutionWords.contains(selectedWord) || solutionWords.contains(String(selectedWord.reversed())))
         //return matchingWordLocation != nil
     }
     

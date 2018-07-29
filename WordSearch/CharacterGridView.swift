@@ -88,16 +88,6 @@ class CharacterGridView: UIView {
         }
     }
     
-    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        //        var i = 0
-        //        for index in touches.indices {
-        //            selectedPoints.append(touches[index].location(in: self))
-        //            i += 1
-        //        }
-        //        print(touches)
-        
-    }
-    
     
     @objc fileprivate func recognizePanGesture(_ recognizer: UIPanGestureRecognizer) {
         var highlight: Highlight?
@@ -105,15 +95,6 @@ class CharacterGridView: UIView {
             if recognizer.state == .changed {
                 if let highlight = highlight {
                     draggingHighlight = highlight
-                    //sarah
-                    var lastLetter = ""
-                    if (!selectedPoints.isEmpty){
-                        lastLetter = ((hitTest(selectedPoints.last!, with: nil) as? CharacterLabel)?.text) ?? ""
-                    }
-                    if (((hitTest(recognizer.location(in: self), with: nil) as? CharacterLabel)?.text) != lastLetter ){
-                        selectedPoints.append(recognizer.location(in: self))
-                    }
-                    //
                 }
             } else if recognizer.state == .ended || recognizer.state == .cancelled {
                 if let highlight = highlight ?? draggingHighlight, let delegate = delegate {
@@ -142,21 +123,8 @@ class CharacterGridView: UIView {
             endPoint: endLabel.center)
         
         //sarah
-        var selectedLetter = ""
         if (recognizer.state == .ended){
-//            for i in 0..<selectedPoints.count {
-//                selectedLetter = ((hitTest(selectedPoints[i], with: nil) as? CharacterLabel)?.text) ?? ""
-//
-//                print("selected letter: \(selectedLetter)")
-//                selectedWord += selectedLetter
-//            }
-            enum CaseOfWord {
-                case vertical
-                case horizontal
-                case diameter
-                case reversedDiameter
-                
-            }
+            //TODO: Arrage this pices of code
             var caseOfSelectedWord: CaseOfWord = .horizontal
             //x is coooool, y is rooooow
             var startX = startLabel.coordinate.x
@@ -184,7 +152,7 @@ class CharacterGridView: UIView {
                 }
             } // if both x and y increase or decrease then it is not reversed
             else if ((startX < endX && startY < endY) || (startX > endX && startY > endY)){
-                caseOfSelectedWord = .diameter
+                caseOfSelectedWord = .diagonal
                 if (startX > endX && startY > endY) {
                     let tempX = startX
                     startX = endX
@@ -194,7 +162,7 @@ class CharacterGridView: UIView {
                     endY = tempY
                 }
             } else if ((startX < endX && startY > endY) || (startX > endX && startY < endY)){
-                caseOfSelectedWord = .reversedDiameter
+                caseOfSelectedWord = .reversedDiagonal
 //                if(startX > endX){
 //                    let temp = startX
 //                    startX = endX
@@ -207,10 +175,10 @@ class CharacterGridView: UIView {
 //                }
             }
             
-            if (caseOfSelectedWord != .vertical && caseOfSelectedWord != .reversedDiameter){
+            if (caseOfSelectedWord != .vertical && caseOfSelectedWord != .reversedDiagonal){
                 for i in startX...endX {
                     selectedWord += characterGrid![startY][i]
-                    if(caseOfSelectedWord == .diameter){
+                    if(caseOfSelectedWord == .diagonal){
                         startY += 1
                     }
                 }
@@ -218,7 +186,7 @@ class CharacterGridView: UIView {
                 for i in startY...endY {
                     selectedWord += characterGrid![i][startX]
                 }
-            } else if (caseOfSelectedWord == .reversedDiameter){
+            } else if (caseOfSelectedWord == .reversedDiagonal){
                 if (startY < endY){
                 for i in startY...endY {
                     selectedWord += characterGrid![i][startX]
