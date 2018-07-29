@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="8oB-hi-5Uk">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Puzzle View Controller-->
+        <scene sceneID="hWI-50-l8h">
+            <objects>
+                <viewController id="z9P-rP-6mR" customClass="PuzzleViewController" customModule="WordSearch" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jQ0-oF-zZY"/>
+                        <viewControllerLayoutGuide type="bottom" id="gHn-sY-8Kr"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ImQ-H5-CnO">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="750" text="Source Word" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P6J-gT-40v">
+                                <rect key="frame" x="88.5" y="15" width="198.5" height="132"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="36"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WJz-9h-23f" customClass="CharacterGridView" customModule="WordSearch" customModuleProvider="target">
+                                <rect key="frame" x="16" y="162" width="343" height="343"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="WJz-9h-23f" secondAttribute="height" multiplier="1:1" id="52E-jQ-vCP"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="word bank" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tTy-7J-j1x">
+                                <rect key="frame" x="133.5" y="520" width="108" height="132"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="tTy-7J-j1x" firstAttribute="centerX" secondItem="ImQ-H5-CnO" secondAttribute="centerX" id="0m9-eH-MaX"/>
+                            <constraint firstItem="gHn-sY-8Kr" firstAttribute="top" secondItem="tTy-7J-j1x" secondAttribute="bottom" constant="15" id="5mb-YY-sSU"/>
+                            <constraint firstItem="WJz-9h-23f" firstAttribute="centerY" secondItem="ImQ-H5-CnO" secondAttribute="centerY" id="78X-IE-Dji"/>
+                            <constraint firstItem="tTy-7J-j1x" firstAttribute="top" secondItem="WJz-9h-23f" secondAttribute="bottom" constant="15" id="7ZJ-cn-k1o"/>
+                            <constraint firstItem="WJz-9h-23f" firstAttribute="centerX" secondItem="ImQ-H5-CnO" secondAttribute="centerX" id="EKy-d7-5d1"/>
+                            <constraint firstItem="WJz-9h-23f" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="ImQ-H5-CnO" secondAttribute="leadingMargin" id="VdT-dq-IkH"/>
+                            <constraint firstItem="P6J-gT-40v" firstAttribute="top" secondItem="ImQ-H5-CnO" secondAttribute="top" constant="15" id="bnz-9r-ZDQ"/>
+                            <constraint firstItem="P6J-gT-40v" firstAttribute="centerX" secondItem="ImQ-H5-CnO" secondAttribute="centerX" id="e8j-hN-TT4"/>
+                            <constraint firstItem="WJz-9h-23f" firstAttribute="top" secondItem="P6J-gT-40v" secondAttribute="bottom" constant="15" id="xwf-r9-9c9"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="b6z-AA-QcU"/>
+                    <connections>
+                        <outlet property="characterGridView" destination="WJz-9h-23f" id="HB7-7u-2Zw"/>
+                        <outlet property="sourceLabel" destination="P6J-gT-40v" id="ThT-Tf-gkP"/>
+                        <outlet property="targetLabel" destination="tTy-7J-j1x" id="vaI-yc-Tzc"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Vps-Tq-8js" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-14" y="-251"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="xGb-GV-OMG">
+            <objects>
+                <navigationController navigationBarHidden="YES" id="8oB-hi-5Uk" customClass="NavigationController" customModule="WordSearch" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="qf6-Pa-J09">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="z9P-rP-6mR" kind="relationship" relationship="rootViewController" id="2QO-lK-jbN"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kNM-Wz-Hqa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-792" y="-183.75"/>
+        </scene>
+    </scenes>
+</document>
