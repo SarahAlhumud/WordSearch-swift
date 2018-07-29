@@ -143,7 +143,7 @@ class PuzzleViewController: UIViewController, CharacterGridViewDelegate {
                 ($0.coordinates.first! == highlight.endCoordinate && $0.coordinates.last! == highlight.startCoordinate)
         })
         //sarah
-        return (solutionWords.contains(selectedWord) || solutionWords.contains(String(selectedWord.reversed())))
+        return (solutionWord.contains(selectedWord) || solutionWord.contains(String(selectedWord.reversed())))
         //return matchingWordLocation != nil
     }
     
