@@ -88,7 +88,9 @@ class PuzzleViewController: UIViewController, CharacterGridViewDelegate {
         defer {
 //            targetLabel.text = solutionWords.description
 //            targetLabel.attributedText = text
-            targetTextView.text = "من ربك ؟\n" + "من نبيك ؟\n" + "ما دينك ؟\n" + "كم عدد ركعات صلاة الفجر؟\n" + "سارة"
+//            targetTextView.text = "من ربك ؟\n" + "من نبيك ؟\n" + "ما دينك ؟\n" + "كم عدد ركعات صلاة الفجر؟\n" + "سارة"
+            targetTextView.text = solutionWords.description
+        
         }
         guard let puzzle = puzzle else { return }
         let strikeThroughAttributes = [

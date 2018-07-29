@@ -381,7 +381,7 @@ class CharacterGridView: UIView {
             toItem: leftLabel,
             attribute: .right,
             multiplier: 1,
-            constant: 0))
+            constant: 5))
         
         addConstraint(NSLayoutConstraint(
             item: rightLabel,
@@ -429,7 +429,7 @@ class CharacterGridView: UIView {
             toItem: topLabel,
             attribute: .bottom,
             multiplier: 1,
-            constant: 0))
+            constant: 5))
         
         addConstraint(NSLayoutConstraint(
             item: bottomLabel,
