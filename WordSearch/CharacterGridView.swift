@@ -31,7 +31,7 @@ class CharacterGridView: UIView {
         didSet {
             highlights.removeAll()
             //sarah
-            selectedWord = ""
+            highlightedWord = ""
             selectedPoints.removeAll()
             draggingHighlight = nil
             updateGrid()
@@ -105,7 +105,7 @@ class CharacterGridView: UIView {
                 }
                 draggingHighlight = nil
                 //sarah
-                selectedWord = ""
+                highlightedWord = ""
                 selectedPoints.removeAll()
             }
             setNeedsDisplay()
@@ -125,7 +125,7 @@ class CharacterGridView: UIView {
         //sarah
         if (recognizer.state == .ended){
             //TODO: Arrage this pices of code
-            var caseOfSelectedWord: CaseOfWord = .horizontal
+            var caseOfSelectedWord: WordDirection = .horizontal
             //x is coooool, y is rooooow
             var startX = startLabel.coordinate.x
             var startY = startLabel.coordinate.y
@@ -177,19 +177,19 @@ class CharacterGridView: UIView {
             
             if (caseOfSelectedWord != .vertical && caseOfSelectedWord != .reversedDiagonal){
                 for i in startX...endX {
-                    selectedWord += characterGrid![startY][i]
+                    highlightedWord += characterGrid![startY][i]
                     if(caseOfSelectedWord == .diagonal){
                         startY += 1
                     }
                 }
             } else if (caseOfSelectedWord == .vertical){
                 for i in startY...endY {
-                    selectedWord += characterGrid![i][startX]
+                    highlightedWord += characterGrid![i][startX]
                 }
             } else if (caseOfSelectedWord == .reversedDiagonal){
                 if (startY < endY){
                 for i in startY...endY {
-                    selectedWord += characterGrid![i][startX]
+                    highlightedWord += characterGrid![i][startX]
                     startX -= 1
 //                    if(startX > endX){
 //                        startX -= 1
@@ -204,7 +204,7 @@ class CharacterGridView: UIView {
 //                        startY -= 1
 //                    }
                     for i in endY...startY {
-                        selectedWord += characterGrid![i][endX]
+                        highlightedWord += characterGrid![i][endX]
                         endX -= 1
                     }
 
@@ -214,7 +214,7 @@ class CharacterGridView: UIView {
             
             print(caseOfSelectedWord)
             print("startLabel \(startLabel.text ?? "") endLabel \(endLabel.text ?? "")")
-            print("selected word: \(selectedWord)")
+            print("selected word: \(highlightedWord)")
             print("startPoint x: \(startLabel.coordinate.x) startPoint y: \(startLabel.coordinate.y)")
             print("endPoint x: \(endLabel.coordinate.x) endPoint y: \(endLabel.coordinate.y)")
             

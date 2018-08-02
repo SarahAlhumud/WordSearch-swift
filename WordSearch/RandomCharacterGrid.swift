@@ -67,7 +67,7 @@ class RandomCharacterGrid {
         var randCol = 0
         
         //choose random direction
-        let randDirection: CaseOfWord = CaseOfWord.randomCaseOfWord()
+        let randDirection: WordDirection = WordDirection.randomWordDirection()
         
         //choose random location
         switch randDirection {
@@ -133,7 +133,7 @@ class RandomCharacterGrid {
         
     }
     
-    func fillGrid(_ word: String,_ randRow: Int,_ randCol: Int,_ location: CaseOfWord,_ index: Int){
+    func fillGrid(_ word: String,_ randRow: Int,_ randCol: Int,_ location: WordDirection,_ index: Int){
         var row = randRow
         var col = randCol
         var randomLetter = 0
