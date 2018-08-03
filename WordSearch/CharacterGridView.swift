@@ -31,7 +31,7 @@ class CharacterGridView: UIView {
         didSet {
             highlights.removeAll()
             //sarah
-            highlightedWord = ""
+            //highlightedWord = ""
             selectedPoints.removeAll()
             draggingHighlight = nil
             updateGrid()
@@ -101,11 +101,12 @@ class CharacterGridView: UIView {
                     if delegate.shouldHighlight(highlight) {
                         highlights.append(highlight)
                         delegate.didHighlight(highlight)
+
                     }
                 }
                 draggingHighlight = nil
                 //sarah
-                highlightedWord = ""
+                //highlightedWord = ""
                 selectedPoints.removeAll()
             }
             setNeedsDisplay()
@@ -121,106 +122,6 @@ class CharacterGridView: UIView {
             endCoordinate: endLabel.coordinate,
             startPoint: startLabel.center,
             endPoint: endLabel.center)
-        
-        //sarah
-        if (recognizer.state == .ended){
-            //TODO: Arrage this pices of code
-            var caseOfSelectedWord: WordDirection = .horizontal
-            //x is coooool, y is rooooow
-            var startX = startLabel.coordinate.x
-            var startY = startLabel.coordinate.y
-            var endX = endLabel.coordinate.x
-            var endY = endLabel.coordinate.y
-            
-            if(startX == endX){
-                if(startY < endY){
-                   caseOfSelectedWord = .vertical
-                } else if(startY > endY){
-                    let temp = startY
-                    startY = endY
-                    endY = temp
-                    caseOfSelectedWord = .vertical
-                }
-            } else if(startY == endY){
-                if(startX < endX){
-                    caseOfSelectedWord = .horizontal
-                } else if(startX > endX){
-                    let temp = startX
-                    startX = endX
-                    endX = temp
-                    caseOfSelectedWord = .horizontal
-                }
-            } // if both x and y increase or decrease then it is not reversed
-            else if ((startX < endX && startY < endY) || (startX > endX && startY > endY)){
-                caseOfSelectedWord = .diagonal
-                if (startX > endX && startY > endY) {
-                    let tempX = startX
-                    startX = endX
-                    endX = tempX
-                    let tempY = startY
-                    startY = endY
-                    endY = tempY
-                }
-            } else if ((startX < endX && startY > endY) || (startX > endX && startY < endY)){
-                caseOfSelectedWord = .reversedDiagonal
-//                if(startX > endX){
-//                    let temp = startX
-//                    startX = endX
-//                    endX = temp
-//                }
-//                if(startY > endY){
-//                    let temp = startY
-//                    startY = endY
-//                    endY = temp
-//                }
-            }
-            
-            if (caseOfSelectedWord != .vertical && caseOfSelectedWord != .reversedDiagonal){
-                for i in startX...endX {
-                    highlightedWord += characterGrid![startY][i]
-                    if(caseOfSelectedWord == .diagonal){
-                        startY += 1
-                    }
-                }
-            } else if (caseOfSelectedWord == .vertical){
-                for i in startY...endY {
-                    highlightedWord += characterGrid![i][startX]
-                }
-            } else if (caseOfSelectedWord == .reversedDiagonal){
-                if (startY < endY){
-                for i in startY...endY {
-                    highlightedWord += characterGrid![i][startX]
-                    startX -= 1
-//                    if(startX > endX){
-//                        startX -= 1
-//                    } else if(startX < endX){
-//                        startX += 1
-//                    }
-                }
-                } else if (startY > endY) {
-                    //both are same result
-//                    for i in startX...endX {
-//                        selectedWord += characterGrid![startY][i]
-//                        startY -= 1
-//                    }
-                    for i in endY...startY {
-                        highlightedWord += characterGrid![i][endX]
-                        endX -= 1
-                    }
-
-                }
-            }
-
-            
-            print(caseOfSelectedWord)
-            print("startLabel \(startLabel.text ?? "") endLabel \(endLabel.text ?? "")")
-            print("selected word: \(highlightedWord)")
-            print("startPoint x: \(startLabel.coordinate.x) startPoint y: \(startLabel.coordinate.y)")
-            print("endPoint x: \(endLabel.coordinate.x) endPoint y: \(endLabel.coordinate.y)")
-            
-
-        }
-        //
     }
     
     fileprivate func coordinateOfLabelAtPoint(_ point: CGPoint) -> Coordinate? {
@@ -231,7 +132,6 @@ class CharacterGridView: UIView {
     }
     
     // MARK: - Drawing
-    
     override func draw(_ rect: CGRect) {
         super.draw(rect)
         

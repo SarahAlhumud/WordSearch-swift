@@ -18,11 +18,9 @@
 		34D695DE1BEE94BD0078B8BA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 34D695DC1BEE94BD0078B8BA /* LaunchScreen.storyboard */; };
 		34D696021BEE95940078B8BA /* Puzzle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D696011BEE95940078B8BA /* Puzzle.swift */; };
 		34D696061BEEB3F50078B8BA /* Coordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D696051BEEB3F50078B8BA /* Coordinate.swift */; };
-		34D696081BEEC01E0078B8BA /* WordLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D696071BEEC01E0078B8BA /* WordLocation.swift */; };
 		34DCA9231BF6386E003419B6 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34DCA9221BF6386E003419B6 /* UIColor+Extensions.swift */; };
 		34DCA9251BF63B7B003419B6 /* Highlight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34DCA9241BF63B7B003419B6 /* Highlight.swift */; };
 		34DCA9291BF659BD003419B6 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34DCA9281BF659BD003419B6 /* NavigationController.swift */; };
-		34F3DEDF1BEFC1C7008B8229 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34F3DEDE1BEFC1C7008B8229 /* Network.swift */; };
 		34F3DEF51BF02A00008B8229 /* CharacterGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34F3DEF41BF02A00008B8229 /* CharacterGridView.swift */; };
 		56831408210B3D8D002B4686 /* RandomCharacterGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56831407210B3D8C002B4686 /* RandomCharacterGrid.swift */; };
 /* End PBXBuildFile section */
@@ -41,11 +39,9 @@
 		34D695DF1BEE94BD0078B8BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		34D696011BEE95940078B8BA /* Puzzle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Puzzle.swift; sourceTree = "<group>"; };
 		34D696051BEEB3F50078B8BA /* Coordinate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinate.swift; sourceTree = "<group>"; };
-		34D696071BEEC01E0078B8BA /* WordLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordLocation.swift; sourceTree = "<group>"; };
 		34DCA9221BF6386E003419B6 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		34DCA9241BF63B7B003419B6 /* Highlight.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Highlight.swift; sourceTree = "<group>"; };
 		34DCA9281BF659BD003419B6 /* NavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
-		34F3DEDE1BEFC1C7008B8229 /* Network.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		34F3DEF41BF02A00008B8229 /* CharacterGridView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterGridView.swift; sourceTree = "<group>"; };
 		56831407210B3D8C002B4686 /* RandomCharacterGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomCharacterGrid.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -104,9 +100,7 @@
 				34D695DC1BEE94BD0078B8BA /* LaunchScreen.storyboard */,
 				34D695DF1BEE94BD0078B8BA /* Info.plist */,
 				34D696011BEE95940078B8BA /* Puzzle.swift */,
-				34D696071BEEC01E0078B8BA /* WordLocation.swift */,
 				34D696051BEEB3F50078B8BA /* Coordinate.swift */,
-				34F3DEDE1BEFC1C7008B8229 /* Network.swift */,
 				344642FF1BF440BA0020C14D /* CollectionType+Extensions.swift */,
 				34DCA9221BF6386E003419B6 /* UIColor+Extensions.swift */,
 				56831407210B3D8C002B4686 /* RandomCharacterGrid.swift */,
@@ -201,12 +195,10 @@
 				56831408210B3D8D002B4686 /* RandomCharacterGrid.swift in Sources */,
 				344642FE1BF42B830020C14D /* CharacterLabel.swift in Sources */,
 				34DCA9291BF659BD003419B6 /* NavigationController.swift in Sources */,
-				34D696081BEEC01E0078B8BA /* WordLocation.swift in Sources */,
 				34D696021BEE95940078B8BA /* Puzzle.swift in Sources */,
 				34D695D61BEE94BD0078B8BA /* PuzzleViewController.swift in Sources */,
 				34D695D41BEE94BD0078B8BA /* AppDelegate.swift in Sources */,
 				34F3DEF51BF02A00008B8229 /* CharacterGridView.swift in Sources */,
-				34F3DEDF1BEFC1C7008B8229 /* Network.swift in Sources */,
 				347470201BF2EFD700A0605F /* JsonGen.swift in Sources */,
 				34D696061BEEB3F50078B8BA /* Coordinate.swift in Sources */,
 				344643001BF440BA0020C14D /* CollectionType+Extensions.swift in Sources */,
